@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+/Users/lzhong/Dropbox/coursera/android/wk2/CourseraAndroid/HelloWorld/.metadata/.plugins/org.eclipse.jdt.core
+3927879410.index
+3273100767.index
+890701192.index
