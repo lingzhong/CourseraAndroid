@@ -78,7 +78,10 @@ public class BookmarksActivity extends Activity {
 
 		Log.i(TAG, "Entered startGoToDangerousActivity()");
 
-		// TODO - Start the GoToDangerousActivity
+		// - Start the GoToDangerousActivity
+		Intent dangerInt = new Intent(BookmarksActivity.this, GoToDangerousActivity.class);
+		startActivity(dangerInt);
+		
 		
 
 	}
