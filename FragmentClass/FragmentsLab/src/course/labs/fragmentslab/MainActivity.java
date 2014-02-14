@@ -25,9 +25,10 @@ public class MainActivity extends Activity implements
 			
 			mFriendsFragment = new FriendsFragment();
 
-			//TODO 1 - add the FriendsFragment to the fragment_container
-			
-			
+			// 1 - add the FriendsFragment to the fragment_container
+			FragmentTransaction friendFragTransaction = getFragmentManager().beginTransaction();
+			friendFragTransaction.add(R.id.fragment_container, mFriendsFragment);
+			friendFragTransaction.commit();
 			
 
 		} else {
@@ -64,11 +65,13 @@ public class MainActivity extends Activity implements
 
 		if (!isInTwoPaneMode()) {
 
-			//TODO 2 - replace the fragment_container with the FeedFragment
-			
+			// 2 - replace the fragment_container with the FeedFragment
 
+			FragmentTransaction feedFragTransaction = getFragmentManager().beginTransaction();
+			feedFragTransaction.replace(R.id.fragment_container, mFeedFragment);
+			feedFragTransaction.addToBackStack(null);
+			feedFragTransaction.commit();
 			
-
 			// execute transaction now
 			getFragmentManager().executePendingTransactions();
 
