@@ -65,10 +65,10 @@ public class ActivityLoaderActivity extends Activity {
 
 		Log.i(TAG,"Entered startExplicitActivation()");
 		
-		// TODO - Create a new intent to launch the ExplicitlyLoadedActivity class
-		
-		// TODO - Start an Activity using that intent and the request code defined above
-
+		// - Create a new intent to launch the ExplicitlyLoadedActivity class
+		Intent getExplicitText = new Intent(ActivityLoaderActivity.this, ExplicitlyLoadedActivity.class);
+		// - Start an Activity using that intent and the request code defined above
+		startActivityForResult(getExplicitText, GET_TEXT_REQUEST_CODE);
 
 	}
 
@@ -78,32 +78,37 @@ public class ActivityLoaderActivity extends Activity {
 
 		Log.i(TAG, "Entered startImplicitActivation()");
 
-		// TODO - Create a base intent for viewing a URL 
+		// - Create a base intent for viewing a URL 
 		// (HINT:  second parameter uses parse() from the Uri class)
 		
+		Intent viewUrlInt = new Intent(Intent.ACTION_VIEW, Uri.parse(URL));
 		
-		// TODO - Create a chooser intent, for choosing which Activity
+		
+		// - Create a chooser intent, for choosing which Activity
 		// will carry out the baseIntent. Store the Intent in the 
 		// chooserIntent variable below. HINT: using the Intent class' 
 		// createChooser())
 		
 		Intent chooserIntent = null;
+		chooserIntent = Intent.createChooser(viewUrlInt, CHOOSER_TEXT);
 
 		Log.i(TAG,"Chooser Intent Action:" + chooserIntent.getAction());
-		// TODO - Start the chooser Activity, using the chooser intent
+		// - Start the chooser Activity, using the chooser intent
 		startActivity(chooserIntent);
 
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-		Log.i(TAG, "Entered onActivityResult()");
-		
-		// TODO - Process the result only if this method received both a
+		// - Process the result only if this method received both a
 		// RESULT_OK result code and a recognized request code
 		// If so, update the Textview showing the user-entered text.
-
-
+		Log.i(TAG, "Entered onActivityResult()");
+		if( requestCode == GET_TEXT_REQUEST_CODE) {
+			if( resultCode == RESULT_OK) {
+				 String text = data.getExtras().getString(android.content.Intent.EXTRA_TEXT);
+				 mUserTextView.setText(text);
+			}
+		}
 	}
 }
